@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.epsilon.egl.eclipse.dt.launching.EglLaunchConfigurationDelegate">
+<booleanAttribute key="appendToFile" value="false"/>
+<intAttribute key="generateTo" value="1"/>
+<stringAttribute key="outputFilePath" value=""/>
+<booleanAttribute key="produceTrace" value="false"/>
+<stringAttribute key="source" value="/MarketPlaceBase/saveJavadoc.egl"/>
+</launchConfiguration>

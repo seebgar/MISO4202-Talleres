@@ -1,0 +1,56 @@
+import '../consultas/detectives.eol';
+
+context detectives!House {
+  
+  
+  critique NumeroPersonas {
+    
+    check : NumeroPersonas() = 6
+    
+    message : "Numero de personas es incorrecto"  
+    
+  }
+  
+  critique NombreVictima {
+    
+    check : NombreVictima() == 'Mrs. Peacock'
+    
+    message : "Victima incorrecta"
+    
+  }
+  
+  critique NumeroCuartosConObjetos {
+    
+    check : NumeroCuartosConObjetos() == 5
+    
+    message : "Numero de cuartos con objetos incorrecto"
+    
+  }
+  
+  critique ObjetoHomicida {
+    
+    check : ObjetoHomicida() == 'Knife'
+    
+    message : "Objeto homicida incorrecto"
+    
+  }
+  
+  critique NumeroSospechosos {
+
+    
+    check : NumeroSospechosos() == 2
+    
+    message : "Numero de sospechosos incorrecto"
+    
+  }
+  
+  critique Asesino {
+
+    
+    check : Asesino() == 'Professor Plum'
+    
+    message : "Asesino incorrecto"
+    
+  }
+  
+}

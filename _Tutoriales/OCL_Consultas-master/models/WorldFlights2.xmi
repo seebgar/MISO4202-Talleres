@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ap:WorldFlights xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ap="http://co.uniandes.modeling.consultasocl.airport">
+  <airlines name="Emirates">
+    <flights origin="//@airports.2" destination="//@airports.1" departTime="12" arrivalTime="18" duration="6" numberOfSeats="4" name="AmsterdamDubai">
+      <passengers minAge="18" age="12" name="Natalia"/>
+      <passengers minAge="3" age="30" needAssistance="true" name="Amhar"/>
+      <passengers minAge="3" age="51" name="Bibi"/>
+    </flights>
+    <flights origin="//@airports.1" destination="//@airports.2" departTime="22" arrivalTime="4" duration="6" numberOfSeats="3" name="DubaiAmsterdam">
+      <passengers minAge="3" age="67" name="Alexander"/>
+      <passengers minAge="3" age="80" needAssistance="true" name="Hudin"/>
+      <passengers minAge="3" age="45" name="Samir"/>
+    </flights>
+  </airlines>
+  <airlines name="KLM">
+    <flights origin="//@airports.0" destination="//@airports.2" departTime="15" arrivalTime="20" duration="5" numberOfSeats="4" name="BogotaAmsterdam">
+      <passengers minAge="3" age="21" name="Andrea"/>
+    </flights>
+    <flights origin="//@airports.2" destination="//@airports.0" departTime="3" arrivalTime="22" duration="5" numberOfSeats="3" name="AmsterdamBogota">
+      <passengers minAge="3" age="32" name="Paula"/>
+    </flights>
+  </airlines>
+  <airports departingflights="//@airlines.1/@flights.0" arrivingflights="//@airlines.1/@flights.1" name="ElDorado"/>
+  <airports departingflights="//@airlines.0/@flights.1" arrivingflights="//@airlines.0/@flights.0" name="Dubai"/>
+  <airports departingflights="//@airlines.1/@flights.1 //@airlines.0/@flights.0" arrivingflights="//@airlines.1/@flights.0 //@airlines.0/@flights.1" name="Amsterdam"/>
+</ap:WorldFlights>

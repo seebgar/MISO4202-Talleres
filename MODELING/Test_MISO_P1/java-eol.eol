@@ -1,0 +1,96 @@
+
+
+// Sebastian Garcia 201630047
+
+System.out.println("--> Cantidad de clases:");
+NumberClasses().println();
+System.out.println("\n");
+
+System.out.println("--> Cantidad de MethodUnits:");
+NumberMethodsUnit().println();
+System.out.println("\n");
+
+System.out.println("--> Cantidad de Tests:");
+testClasses().println();
+System.out.println("\n");
+
+System.out.println("--> Cantidad de Hojas:");
+NumberLeaves().println();
+System.out.println("\n");
+
+System.out.println("--> Comentarios:");
+CommentsPage().println();
+System.out.println("\n");
+
+
+/*
+0.
+*/
+operation NumberClasses(): Integer {
+	return (ClassUnit.allInstances.size());
+}
+
+
+/*
+1.
+Que al ejecutarse sobre las ClassUnit, cuente todos los MethodUnit a excepción de los métodos getters y setters. 
+*/
+operation NumberMethodsUnit(): Integer {
+	return MethodUnit.allInstances.select(m | m.name.matches("^(?!get).*$") and m.name.matches("^(?!set).*$")).size();
+}
+
+
+/*
+2.
+Que al ejecutarse sobre los Packages, cuente las ClassUnit cuyos nombres terminen con Test.
+*/
+operation testClasses(): Integer {
+	return ClassUnit.allInstances.select(class|class.name.matches(".*Test")).size();
+}
+
+
+/*
+3. TODO
+Que al ejecutarse sobre cada Package, cuente el total de paquetes dentro del mismo que no tienen otros hijos paquetes (es decir que son hojas de la jerarquía de Packages)
+*/
+operation NumberLeaves(): Integer {
+	var result: Set = new Set();
+	
+	for ( p in Package.allInstances ) {
+		var count: Integer = 0;
+		for ( x in p.codeElement ) {
+			if ( x.isTypeOf(Package) ) {
+				count++;
+			}
+		}
+		if ( count = 0 ) {
+			result.add(p.name); // o solamnete p
+		}
+	}
+	
+	// Nombres de las Hojas (No se repiten nombres)
+	result.println();
+	// Cantidad Total de Hojas
+	return Package.allInstances.select( p | p.codeElement.select( x | x.isTypeOf(Package) ).size() == 0 ).size();
+}
+
+/*
+4.
+Que al ejecutarse sobre cada Package, devuelva todos los comentarios que contienen el texto: "Page"
+*/
+operation CommentsPage(): Sequence {
+	return CommentUnit.allInstances.select( c | c.text.contains("Page") );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

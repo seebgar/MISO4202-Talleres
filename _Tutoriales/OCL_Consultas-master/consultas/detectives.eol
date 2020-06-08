@@ -1,0 +1,80 @@
+
+
+/*
+Sebastian Garcia 201630047
+
+
+"--> Numero Personas en la casa:".println();
+NumeroPersonas().println();
+
+"--> Nombre Victima:".println();
+NombreVictima().println();
+
+"--> Cuartos con Objetos:".println();
+NumeroCuartosConObjetos().println();
+
+"--> Objeto arma homicida:".println();
+ObjetoHomicida().println();
+
+"--> Personas sospechosas:".println();
+NumeroSospechosos().println();
+
+"--> Nombre asesino:".println();
+Asesino().println();
+
+*/
+
+// ======================================================
+
+
+
+//¿Cuántas personas hay en la casa?
+operation NumeroPersonas():Integer{
+	return Person.allInstances.Size();
+}
+
+//¿Cuál es el nombre de la víctima?
+operation NombreVictima():String{
+	return Person.allInstances.select(p |p.alive = false).first().name;
+}
+
+//¿Cuántos cuartos tienen objetos?
+operation NumeroCuartosConObjetos():Integer{
+	return Room.allInstances.select( c | c.objects.size() > 0).size();
+}
+
+//¿Qué objeto es el arma homicida? (El objeto en el cuarto donde no hay personas)
+operation ObjetoHomicida():String{
+	return Room.allInstances.select(c|c.people.size() = 0 and c.objects.size() > 0).first().objects.first().name;
+}
+
+operation CuartosSospechosos(): Sequence {
+	return Room.allInstances.select(c | c.objects.size() = 0 and c.people.size() > 0);
+}
+
+operation PersonasSospechosas(): Sequence {
+	var seq: Sequence;
+	var people: Sequence = CuartosSospechosos().collect(c:Room | c.people);
+	for ( p in people ) {
+		for ( x in p ) {
+			seq.add(x);
+		}
+	} 
+	return seq;
+}
+
+//¿Cuántas personas son sospechosas? (No hay objetos en el cuarto donde están)
+operation NumeroSospechosos():Integer{
+	return PersonasSospechosas().size();
+}
+
+//Quién es el asesino? (Debe tener menos de 30 años y ser sospechoso)
+operation Asesino():String{
+	var per: Person = PersonasSospechosas().select(p | p.age > 30 and p.alive = true ).first();
+	if ( per <> null ) {
+		return per.name;
+	}
+	// El asesino tiene menos de 30 años
+	return PersonasSospechosas().select(p | p.alive = true  ).first().name;
+}
+

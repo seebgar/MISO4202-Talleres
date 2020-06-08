@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dt:House xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:dt="http://co.uniandes.modeling.consultasocl.detectives">
+  <rooms name="Hall" people="//@people.0">
+    <objects name="Wrench"/>
+  </rooms>
+  <rooms name="Study" people="//@people.3"/>
+  <rooms name="Lounge" people="//@people.1">
+    <objects name="Candlestick"/>
+  </rooms>
+  <rooms name="Library" people="//@people.5"/>
+  <rooms name="Billard Room" people="//@people.2">
+    <objects name="Lead pipe"/>
+  </rooms>
+  <rooms name="Conservatory"/>
+  <rooms name="Ballroom" people="//@people.4">
+    <objects name="Revolver"/>
+    <objects name="Rope"/>
+  </rooms>
+  <rooms name="Kitchen"/>
+  <rooms name="Dinning Room">
+    <objects name="Knife"/>
+  </rooms>
+  <people name="Coronel Mustard" age="61" profesion="Militar" alive="true"/>
+  <people name="Miss Scarlet" age="29" profesion="IT Consultant" alive="true"/>
+  <people name="Mr. Green" age="53" profesion="Lawyer" alive="true"/>
+  <people name="Mrs. Peacock" age="65" profesion="Retired"/>
+  <people name="Mrs. White" age="69" profesion="Housekeeper" alive="true"/>
+  <people name="Professor Plum" age="28" profesion="Scientific" alive="true"/>
+  <doors rooms="//@rooms.1 //@rooms.0"/>
+  <doors rooms="//@rooms.0 //@rooms.2"/>
+  <doors rooms="//@rooms.2 //@rooms.8"/>
+  <doors rooms="//@rooms.8 //@rooms.7"/>
+  <doors rooms="//@rooms.7 //@rooms.6"/>
+  <doors rooms="//@rooms.6 //@rooms.5"/>
+  <doors rooms="//@rooms.5 //@rooms.4"/>
+  <doors rooms="//@rooms.4 //@rooms.3"/>
+  <doors rooms="//@rooms.3 //@rooms.1"/>
+</dt:House>

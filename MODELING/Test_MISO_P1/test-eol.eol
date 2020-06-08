@@ -1,0 +1,6 @@
+
+/*
+Sebastian Garcia 201630047
+*/
+
+Folder.allInstances.Size().println(); // 1

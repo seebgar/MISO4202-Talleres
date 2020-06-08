@@ -1,0 +1,132 @@
+import '../consultas/aeropuerto.eol';
+
+context aeropuerto!Flight {
+  
+  
+  critique DurationIsLessThanFour {
+    guard : self.name = 'AmsterdamBogota'
+    
+    check : self.durationIsLessThanFour()
+    
+    message : "Duration time for flight "+self.name+" is more than 4"  
+    
+  }
+  
+  critique MaxNumberOfPassengers {
+    
+    guard : self.name = 'DubaiAmsterdam'
+    
+    check : self.maxNumberOfPassengers()
+    
+    message : "Max number of passangers exceed 1000 for flight "+self.name  
+    
+  }
+  
+  critique isOriginDifferentThanDestination {
+    
+    guard : self.name = 'AmsterdamDubai'
+    
+    check : self.isOriginDifferentThanDestination()
+    
+    message : "Origin is not different from destination for flight "+self.name  
+    
+  }
+  
+  critique isOriginAmsterdam {
+    
+    guard : self.name = 'AmsterdamDubai'
+    
+    check : self.isOriginAmsterdam()
+    
+    message : "Origin is not Amsterdam for flight "+self.name  
+    
+  }
+  
+  critique isAirlineKLM {
+    
+    guard : self.name = 'BogotaAmsterdam'
+    
+    check : self.isAirlineKLM()
+    
+    message : "Airline is not KLM for flight "+self.name  
+    
+  }
+  
+  critique numPassangersEqualsOrSuperiorToNumberOfSeats {
+    
+    guard : self.name = 'AmsterdamDubai'
+    
+    check : self.numPassangersEqualsOrSuperiorNumberOfSeats()
+    
+    message : "Number of passengers is less than the number of seats for flight "+self.name  
+    
+  }
+  
+  critique notExceedNumberPassengersAssistance {
+    
+    guard : self.name = 'AmsterdamDubai'
+    
+    check : self.notExceedNumberPassengersAssistance()
+    
+    message : "There are more than 10 passengers requiring assistance for flight "+self.name  
+    
+  }
+  
+  
+}
+
+context aeropuerto!Passenger {
+  
+  
+  critique isAgeValid {
+    guard : self.name = 'Amhar'
+    
+    check : self.isAgeValid()
+    
+    message : "Age of passanger "+self.name+" is not valid"
+    
+  }
+  
+}
+
+
+context aeropuerto!Airport {
+  
+  
+  critique isArrivingFlighsNotEmpty {
+    guard : self.name = 'Amsterdam'
+    
+    check : self.isArrivingFlighsNotEmpty()
+    
+    message : "There are not arriving flights in airport "+self.name
+    
+  }
+  
+  critique isDepartingFlightsDurationLessThanFourNotEmpty {
+    guard : self.name = 'Dubai'
+    
+    check : self.isDepartingFlightsDurationLessThanFourNotEmpty()
+    
+    message : "There are not flights with duration less than 4 in airport "+self.name
+    
+  }
+  
+  critique isDepartingFlightsDepartTimeMoreThanSix {
+    guard : self.name = 'ElDorado'
+    
+    check : self.isDepartingFlightsDepartTimeMoreThanSix()
+    
+    message : "There are not flights with  depart time more than six in airport"+self.name
+    
+  }
+  
+  critique existDepartingFlightDepartTimeMoreThanSix {
+    guard : self.name = 'Dubai'
+    
+    check : self.existDepartingFlightDepartTimeMoreThanSix()
+    
+    message : "There is not any flight with depart time more than six in airport"+self.name
+    
+  }
+  
+}

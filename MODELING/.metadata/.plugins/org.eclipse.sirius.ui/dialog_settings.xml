@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExportRepresentationsAsImagesDialog">
+		<item key="ExportRepresentationsAsImagesDialog.imageFormat" value="PNG"/>
+		<list key="ExportRepresentationsAsImagesDialog.file">
+			<item value="/Users/sebastian/git/Taller1_Automatizacion/Tercera Entrega"/>
+			<item value="/Users/sebastian/git/Taller1_Automatizacion/Tercera Entrega/Metamodelo-Actualizado"/>
+			<item value="/Users/sebastian/git/Taller1_Automatizacion/Tercera Entrega/:Users:sebastian:git:Taller1_Automatizacion:model:ceffective class diagram.jpg"/>
+		</list>
+	</section>
+</section>

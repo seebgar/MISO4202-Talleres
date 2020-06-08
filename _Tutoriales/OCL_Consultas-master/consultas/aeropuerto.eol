@@ -1,0 +1,79 @@
+
+/*
+Sebastian Garcia 201630047
+*/
+
+
+
+//1. For a given flight object must have a duration that is less than four
+operation Flight durationIsLessThanFour():Boolean{
+	return self.duration<4;
+}
+
+
+//2. The maximum number of passengers on a given flight may not exceed 1000
+operation Flight maxNumberOfPassengers():Boolean{
+	return self.passengers.size() <= 1000;
+}
+
+
+//3. For a given passenger object the age attribute must be greater than or equal to the class attribute minAge
+operation Passenger isAgeValid():Boolean{
+	return self.age >= self.minAge;
+}
+
+
+//4. The airport from which a flight is leaving is different from the destination airport.
+operation Flight isOriginDifferentThanDestination():Boolean{
+	return self.origin <> self.destination;
+}
+
+
+//5. For a given flight, the name of the airport from which it is leaving, must be “Amsterdam”.
+operation Flight isOriginAmsterdam():Boolean{
+	return self.origin.name == "Amsterdam";
+}
+
+
+//6. For a given flight, the name of the airline must be “KLM”.
+operation Flight isAirlineKLM():Boolean{
+	return self.airline.name == "KLM";
+}
+
+
+//7. The number of passengers in a given flight must be equals or superior than the number of seats in the airplane.
+operation Flight numPassangersEqualsOrSuperiorNumberOfSeats():Boolean{
+	return self.passengers.size() >= self.numberOfSeats;
+}
+
+
+//8. True if, for a given Airport, the collection of airline objects corresponding to its arrivingFlights is not empty.
+operation Airport isArrivingFlighsNotEmpty():Boolean{
+	return self.arrivingflights.select(f: Flight|f.airline <> null).notEmpty();
+}
+
+
+//9. True if, for a given Airport, the collection of departing Flights objects which duration is less than 4 hours is not empty.
+operation Airport isDepartingFlightsDurationLessThanFourNotEmpty():Boolean{
+	return self.departingflights.select( f: Flight | f.durationIsLessThanFour() ).notEmpty();
+}
+
+
+//10. True if, for a given Airport, all the departing Flights have a depart time superior of 6 .
+operation Airport isDepartingFlightsDepartTimeMoreThanSix():Boolean{
+	return self.departingflights.forAll(f: Flight | f.departTime > 6);
+}
+
+
+//11. True if, for a given Airport, if exist a departing Flight which its depart time is superior than 6.
+operation Airport existDepartingFlightDepartTimeMoreThanSix():Boolean{
+	return self.departingflights.exists(f: Flight|f.departTime > 6);
+}
+
+
+//12. For a given flight, cannot have more than 10 passengers requiring assistance.
+operation Flight notExceedNumberPassengersAssistance():Boolean{
+	return self.passengers.select(p: Passenger | p.needAssistance).size() < 10;
+}
+
+
