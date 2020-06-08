@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ceffective:Ceffective
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Ceffective="https://www.uniandes.edu.co/ceffective"
+    xsi:schemaLocation="https://www.uniandes.edu.co/ceffective ceffective.ecore">
+  <proveedorNube
+      nombre="AWS">
+    <ambientedespliegue>
+      <recursos
+          xsi:type="Ceffective:ServidorAplicaciones"
+          nombre="Servidor web 1"
+          recursos="//@proveedorNube/@ambientedespliegue.0/@recursos.1"
+          sistemaOperativo="Linux"/>
+      <recursos
+          xsi:type="Ceffective:Almacenamiento"
+          nombre="Disco base"/>
+      <recursos
+          xsi:type="Ceffective:ServidorBD"
+          nombre="Base de datos maestra"
+          tipo="Relacional"
+          sistemaManejador="Postgres"/>
+    </ambientedespliegue>
+    <mecanismoseguridad
+        xsi:type="Ceffective:Subred"
+        nombre="Red1"
+        cidrBlock="1234"
+        zonaDisponibilidad="Z1">
+      <vpc nombre="Red privada 1"/>
+    </mecanismoseguridad>
+    <mecanismoseguridad
+        xsi:type="Ceffective:InternetGateway"
+        nombre="IG1">
+      <vpc nombre="Red Privada 2"/>
+    </mecanismoseguridad>
+    <mecanismoseguridad
+        xsi:type="Ceffective:GrupoSeguridad"
+        nombre="Grupo1"
+        descripcion="Grupo de seguridad red 1"
+        zonaDisponibilidad="Z1">
+      <reglasSalida
+          tipo="SSH"
+          protocolo="TCP"
+          puerto="22"
+          origen="192.0.0.1/0"
+          descripcion="Conexion SSH"/>
+      <reglasEntrada
+          tipo="HTTP"
+          protocolo="TCP"
+          puerto="8080"
+          origen="192.168.0.1"
+          descripcion="Regla HTTP"/>
+      <vpc nombre="Red Privada 1"/>
+    </mecanismoseguridad>
+    <autenticacionUsuario
+        xsi:type="Ceffective:AutenticacionBasica"
+        usuario="usuario1"
+        correo="prueba@uniandes.edu.co"
+        password="1234"/>
+    <autenticacionUsuario
+        xsi:type="Ceffective:AutenticacionFirma"
+        usuario="usuario2"
+        correo="prueba2@uniandes.edu.co"
+        nombre="Firma IST"
+        certificado="ambienteIST.pem"/>
+  </proveedorNube>
+</Ceffective:Ceffective>
